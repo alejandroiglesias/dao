@@ -1,0 +1,180 @@
+@import "defaults";
+@import "generic/normalize";
+@import "generic/clearfix";
+@import "generic/helper";
+@import "generic/widths";
+@import "base/main";
+@import "base/print";
+
+
+// @mixin dao-paragraph-container {
+//     margin: 0 auto;
+//     max-width: 40em;
+// }
+// @mixin dao-grid-container {
+//     @extend .clearfix;
+//     // margin-left: -5%;
+//     width: 100%;
+//     background-color: gray;
+// }
+@mixin article-layout {
+    max-width: 60em;
+    margin: 0 auto;
+}
+@mixin dao-grid-item($width) {
+    @extend .#{$width};
+    float: left;
+}
+
+
+
+body {
+    font-family: Georgia, serif;
+    line-height: 1.625;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #ba3925;
+}
+h1 {
+    font-size: 2.6rem;
+    color: black;
+}
+h2 {
+    font-size: 1.625rem;
+}
+h3 {
+    font-size: 1.25rem;
+}
+h4 {
+    font-size: 1rem;
+}
+h5 {
+    font-size: 0.8125rem;
+}
+
+a {
+    color: #2455c3;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.logo-holder {
+    @include article-layout;
+
+    .killer-logo {
+        font-size: 8.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        white-space: nowrap;
+        margin: 0;
+        margin-top: -4.4rem;
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+}
+
+// .main-wrapper {
+//     position: relative;
+// }
+
+.content-minutiae {
+    @include dao-grid-item(one-eighth);
+}
+
+.article-layout {
+    @include article-layout;
+    position: relative;
+    padding: 0 2.5em;
+
+    .entry-header {
+        text-align: center;
+
+        .issue-number {
+            background-color: #BF4231;
+            display: block;
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            border-radius: 120px;
+            text-indent: -9999px;
+            top: -90px;
+            left: 0;
+        }
+
+        .entry-title {
+            margin-bottom: 0;
+        }
+        .entry-details {
+            font-style: italic;
+            font-size: 105%;
+            margin-top: 0;
+
+            .author {
+                text-transform: uppercase;
+                font-style: normal;
+                font-weight: bold;
+                font-family: sans-serif;
+            }
+            .author,
+            .pubdate {
+                white-space: nowrap;
+            }
+        }
+
+        .optional-break {
+            display: block;
+        }
+    }
+
+    .main-content {
+        & > p {
+            @include dao-grid-item(seven-eighths);
+
+            &:first-child {
+                font-size: 1.5em;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.global-nav {
+    position: absolute;
+    top: 0;
+    background: rgba(255,255,255,.98);
+    border-bottom: 1px solid #d8d8d8;
+    font-family: sans-serif;
+    width: 100%;
+
+    .inline-items {
+        @include article-layout;
+        list-style: none;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.83rem;
+            margin: 0.8em 1.8em 0.8em 0;
+
+            a {
+                color: black;
+            }
+        }
+    }
+}
